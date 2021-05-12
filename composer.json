@@ -1,0 +1,23 @@
+{
+    "name": "ultradevs/ultra-embed",
+    "description": "UltraEmbed (Advanced Iframe For WordPress)",
+    "authors": [
+        {
+            "name": "sohagislam"
+        },
+        {
+            "name": "mhimon",
+            "email": "mahbubhasanimon@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "appsero/client": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "ultraDevs\\UltraEmbed\\": "includes/"
+        },
+        "files": [ "includes/functions.php" ]
+    }
+}
