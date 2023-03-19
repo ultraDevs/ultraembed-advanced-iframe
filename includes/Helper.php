@@ -39,7 +39,7 @@ class Helper {
 	 * @param string $key Option Key.
 	 * @param mixed  $default Option Default.
 	 */
-	public static function get_option( $key, $default ) {
+	public static function get_option( $key, $default = '' ) {
 		// Get Option.
 		$value = get_option( $key, $default );
 		return $value;
@@ -98,5 +98,17 @@ class Helper {
 		}
 
 		return $array_or_string;
+	}
+
+	/**
+	 * Time to Day(s) Converter
+	 *
+	 * @param int $time Time.
+	 * @return int
+	 */
+	public static function time_to_days( $time ) {
+
+		$current_time = current_time( 'timestamp' ); //phpcs:ignore
+		return round( ( $current_time - $time ) / 24 / 60 / 60 );
 	}
 }

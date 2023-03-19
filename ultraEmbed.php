@@ -9,7 +9,7 @@
  * Plugin Name:       UltraEmbed (Advanced Iframe)
  * Plugin URI:        https://ultradevs.com/wp/plugins/ultraembed-advanced-iframe
  * Description:       Use Iframe with more features using shortcode [iframe src="Link"]
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            ultraDevs
  * Author URI:        https://ultradevs.com
  * License:           GPL v2 or later
@@ -82,6 +82,9 @@ final class UD_Ultra_Embed {
 
 		if ( is_admin() ) {
 
+			$review = new \ultraDevs\UltraEmbed\Review();
+			$review->register();
+
 			// Plugin Action Links.
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 
@@ -120,14 +123,10 @@ final class UD_Ultra_Embed {
 	 * @return array
 	 */
 	public function plugin_action_links( $links ) {
-
-		$links[] = '<a href="https://www.buymeacoffee.com/sohagsrz" target="_blank">Donate</a>';
+		$links[] = '<a href="https://ultradevs.com/donate" target="_blank">Donate</a>';
 		$links[] = '<a href="https://ultradevs.com/support" target="blank">Support</a>';
-
 		return $links;
-
 	}
-
 
 	/**
 	 * Initialize the plugin tracker
