@@ -8,7 +8,7 @@
 /**
  * Plugin Name:       UltraEmbed (Advanced Iframe)
  * Plugin URI:        https://ultradevs.com/wp/plugins/ultraembed-advanced-iframe
- * Description:       Use Iframe with more features using shortcode [iframe src="Link"]
+ * Description:       Use Iframe with more features using shortcode [iframe src="Link"] and Gutenberg Block.
  * Version:           1.0.2
  * Author:            ultraDevs
  * Author URI:        https://ultradevs.com
@@ -75,14 +75,10 @@ final class UD_Ultra_Embed {
 	 * Constructor
 	 */
 	public function __construct() {
-
-		$this->appsero_init_tracker_ud_ultra_embed();
-
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
-
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		add_action( 'init', array( $this, 'load_text_domain' ) );
-
+		add_action( 'init', array( $this, 'register_block' ) );
 		do_action( 'ultraembed_loaded' );
 	}
 
@@ -107,12 +103,23 @@ final class UD_Ultra_Embed {
 	}
 
 	/**
+	 * Register block type.
+	 */
+	public function register_block() {
+		register_block_type( __DIR__ . '/build' );
+	}
+
+	/**
 	 * Plugin Init
 	 */
 	public function init() {
 
 		// Iframe Class.
 		$iframe = new ultraDevs\UltraEmbed\Iframe();
+
+		// Assets.
+		$assets = new ultraDevs\UltraEmbed\Assets();
+		$assets->register();
 
 		if ( is_admin() ) {
 
@@ -164,24 +171,6 @@ final class UD_Ultra_Embed {
 		$links[] = '<a href="https://ultradevs.com/donate" target="_blank">Donate</a>';
 		$links[] = '<a href="https://ultradevs.com/support" target="blank">Support</a>';
 		return $links;
-	}
-
-	/**
-	 * Initialize the plugin tracker
-	 *
-	 * @return void
-	 */
-	public function appsero_init_tracker_ud_ultra_embed() {
-
-		if ( ! class_exists( 'Appsero\Client' ) ) {
-			require_once __DIR__ . '/appsero/src/Client.php';
-		}
-
-		$client = new Appsero\Client( '89c0b59f-b4ad-466c-b5a7-9ac9a00b5c4f', 'UltraEmbed (Advanced Iframe For WordPress)', __FILE__ );
-
-		// Active insights.
-		$client->insights()->init();
-
 	}
 }
 /**

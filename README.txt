@@ -1,7 +1,7 @@
-=== UltraEmbed (Advanced Iframe For WordPress) ===
+=== UltraEmbed - Advanced Iframe Plugin For WordPress with Gutenberg Block Included  ===
 Contributors: ultradevs, mhimon, sohagislam
 Donate link: https://ultradevs.com/donate/
-Tags: embed iframe, iframe by shortcode, iframe with condtion,iframe for logged user,iframe for all user
+Tags: iframe, embed iframe by shortcode, iframe with condtion,iframe for logged user, iframe for all user
 Requires at least: 4.4
 Tested up to: 6.1
 Stable tag: 1.0.2
@@ -22,6 +22,10 @@ UltraEmbed for WordPress. It has some advanced features that will help you to ma
 * And many more...
 
 ### Usage
+
+<pre>
+    [iframe src="https://ultradevs.com" width="100%" height="10000"]
+</pre>
 
 Simply use [iframe] shortcode with the src attribute. Example [iframe src="https://ultradevs.com"]
 you can also use other parameters ( width, height, style, class ).
@@ -56,14 +60,6 @@ Made with love by [Sohag Srz](https://ultradevs.com) from [ultraDevs](https://ul
 ### Join With US
 [Facebook - Community](https://web.facebook.com/groups/ultraDevs/) | [Facebook - Page](https://web.facebook.com/hello.ultradevs) | [Youtube](https://www.youtube.com/channel/UCc2yL-QGQjscXpPx9Pp7J8w?sub_confirmation=1) | [Twitter](https://twitter.com/ultraDevsBD) | [Instagram](https://www.instagram.com/ultradevs/)
 
-## Privacy Policy 
-UltraEmbed (Advanced Iframe) uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
-
-Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users. 
-
-Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
-
-Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
 
 
 == Installation ==

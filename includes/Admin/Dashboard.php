@@ -8,8 +8,6 @@
 
 namespace ultraDevs\UltraEmbed\Admin;
 
-use ultraDevs\UltraEmbed\Helper;
-
 /**
  * Dashboard Class
  *
