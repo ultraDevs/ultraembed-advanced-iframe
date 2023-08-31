@@ -26,11 +26,45 @@ define( 'UD_ULTRA_EMBED_VERSION', '1.0.0' );
 define( 'UD_ULTRA_EMBED_NAME', plugin_basename( __FILE__ ) );
 define( 'UD_ULTRA_EMBED_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'UD_ULTRA_EMBED_DIR_URL', plugin_dir_url( __FILE__ ) );
+define( 'UD_ULTRA_EMBED_ASSETS', UD_ULTRA_EMBED_DIR_URL . 'assets/' );
+define( 'UD_ULTRA_EMBED_MENU_SLUG', 'ultraembed-advanced-iframe' );
 
 /**
  * Require Composer Autoload
  */
 require_once UD_ULTRA_EMBED_DIR_PATH . 'vendor/autoload.php';
+
+if ( ! function_exists( 'ud_uei' ) ) {
+	// Create a helper function for easy SDK access.
+	function ud_uei() {
+		global $ud_uei;
+
+		if ( ! isset( $ud_uei ) ) {
+			// Include Freemius SDK.
+			require_once dirname(__FILE__) . '/freemius/start.php';
+
+			$ud_uei = fs_dynamic_init( array(
+				'id'                  => '12775',
+				'slug'                => 'ultraembed-advanced-iframe',
+				'type'                => 'plugin',
+				'public_key'          => 'pk_cf1ffd01996fff55d6437bb3fa364',
+				'is_premium'          => false,
+				'has_addons'          => false,
+				'has_paid_plans'      => false,
+				'menu'                => array(
+					'slug'           => 'ultraembed-advanced-iframe',
+				),
+			) );
+		}
+
+		return $ud_uei;
+	}
+
+	// Init Freemius.
+	ud_uei();
+	// Signal that SDK was initiated.
+	do_action( 'ud_uei_loaded' );
+}
 
 /**
  * Ultra Embed class
@@ -84,6 +118,10 @@ final class UD_Ultra_Embed {
 
 			$review = new \ultraDevs\UltraEmbed\Review();
 			$review->register();
+
+			// Admin Dashboard.
+			$dashboard = new ultraDevs\UltraEmbed\Admin\Dashboard();
+			$dashboard->register();
 
 			// Plugin Action Links.
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );

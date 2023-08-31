@@ -2,21 +2,18 @@
 /**
  * Dashboard
  *
- * @package IntegrateDropbox
+ * @package UltraEmbed
  * @since 1.0.0
  */
 
-namespace ultraDevs\IntegrateDropbox\Admin;
+namespace ultraDevs\UltraEmbed\Admin;
 
-use ultraDevs\IntegrateDropbox\App\App;
-use ultraDevs\IntegrateDropbox\App\Client;
-use ultraDevs\IntegrateDropbox\Helper;
-use ultraDevs\IntegrateDropbox\Assets_Manager;
+use ultraDevs\UltraEmbed\Helper;
 
 /**
  * Dashboard Class
  *
- * @package IntegrateDropbox
+ * @package UltraEmbed
  * @since 1.0.0
  */
 class Dashboard {
@@ -28,20 +25,12 @@ class Dashboard {
 	public static $menu = '';
 
 	/**
-	 * Menu Icon
-	 *
-	 * @var string
-	 */
-	public static $icon = INTEGRATE_DROPBOX_ASSETS . 'images/sl.svg';
-
-	/**
 	 * Register
 	 */
 	public function register() {
 		add_action( 'admin_menu', array( __CLASS__, 'register_menu' ) );
-		add_action( 'admin_init', array( $this, 'handle_authorization' ) );
 
-		if ( is_admin() && isset( $_GET[ 'page' ] ) && INTEGRATE_DROPBOX_MENU_SLUG === wp_unslash( $_GET['page'] ) ) { // phpcs:ignore
+		if ( is_admin() && isset( $_GET[ 'page' ] ) && UD_ULTRA_EMBED_MENU_SLUG === wp_unslash( $_GET['page'] ) ) { // phpcs:ignore
 			add_action( 'in_admin_header', array( $this, 'remove_notices' ) );
 		}
 	}
@@ -51,27 +40,14 @@ class Dashboard {
 	 * Register Admin Menu
 	 */
 	public static function register_menu() {
-		self::$menu = add_menu_page( __( 'Dashboard - Integrate Dropbox', 'integrate-dropbox' ), __( 'Dropbox', 'integrate-dropbox' ), 'manage_options', INTEGRATE_DROPBOX_MENU_SLUG, array( __CLASS__, 'view_main' ), Helper::get_icon(), 56 );
-
-		// Assets Manager Class.
-		$assets_manager = new Assets_Manager();
-
-		add_action( 'admin_print_scripts-' . self::$menu, array( $assets_manager, 'admin_assets' ) );
+		self::$menu = add_menu_page( __( ' UltraEmbed (Advanced Iframe)', 'ultraembed-advanced-iframe' ), __( 'UltraEmbed', 'ultraembed-advanced-iframe' ), 'manage_options', UD_ULTRA_EMBED_MENU_SLUG, array( __CLASS__, 'view_main' ), 'dashicons-editor-code', 56 );
 	}
 
 	/**
 	 * Main View
 	 */
 	public static function view_main() {
-		echo '<div id="ud-id-app"></div>';
-	}
-
-	public function handle_authorization() {
-		if ( isset( $_GET['action'] ) && 'authorization' === $_GET['action'] ) {
-			
-			$app = new App();
-			$app->process_authorization();
-		}
+		echo '<div id="ud-id-app">Hola</div>';
 	}
 
 	/**
