@@ -1,13 +1,1 @@
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-iframe {
-  border: 1px dotted #f00;
-}
-
-/*# sourceMappingURL=index.css.map*/
+.ud-iframe-pro{background-color:#fff;border:2px dashed #ddd;padding:10px}.ud-iframe-pro p{margin:15px 0}.ud-iframe-pro ul{list-style:none;margin:0;padding:0}.ud-iframe-pro ul li{margin-bottom:10px}

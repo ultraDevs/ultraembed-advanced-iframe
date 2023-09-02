@@ -1,25 +1,17 @@
 import { useBlockProps } from '@wordpress/block-editor';
+import Render from './iframeRender';
 
 export default function save(props) {
     const { attributes } = props;
     const { iframeData } = attributes;
 	return (
-		<div { ...useBlockProps.save() }>
-			<iframe
-                src={ iframeData.url }
-                height={ iframeData.height }
-                width={ iframeData.width }
-                allowFullScreen={ iframeData.allowFullScreen }
-                allowTransparency={ iframeData.allowTransparency }
-                border={ iframeData.frameBorder }
-                title={ iframeData.title }
-                name={ iframeData.name }
-                loading={ iframeData.loading }
-                id={ iframeData.id }
-                className={ iframeData.class }
-                // style={ iframeData.style }
-                sandbox={ iframeData.sandbox }
-            />
+		<div { ...useBlockProps.save({
+			className: 'ultradevs-iframe-block',
+			style: {
+				'--ud-iframe-border' : iframeData.frameBorder ? iframeData.frameBorder + 'px' : '0px',
+			}
+		}) }>
+			<Render iframeData={ iframeData } />
 		</div>
 	);
 }

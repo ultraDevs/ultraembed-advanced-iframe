@@ -1,9 +1,21 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.ultradevs-iframe-block {
+	// border: 2px dashed #ddd;
+}
+.ud-iframe-pro {
+	border: 2px dashed #ddd;
+	background-color: #fff;
+	padding: 10px;
+	p {
+		margin: 15px 0;
 
-.wp-block-create-block-iframe {
-	border: 1px dotted #f00;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+			margin-bottom: 10px;
+		}
+	}
 }

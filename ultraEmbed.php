@@ -9,7 +9,7 @@
  * Plugin Name:       UltraEmbed (Advanced Iframe)
  * Plugin URI:        https://ultradevs.com/wp/plugins/ultraembed-advanced-iframe
  * Description:       Use Iframe with more features using shortcode [iframe src="Link"] and Gutenberg Block.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            ultraDevs
  * Author URI:        https://ultradevs.com
  * License:           GPL v2 or later
@@ -22,7 +22,7 @@
 defined( 'ABSPATH' ) || exit( 'bYe bYe!' );
 
 // Constant.
-define( 'UD_ULTRA_EMBED_VERSION', '1.0.0' );
+define( 'UD_ULTRA_EMBED_VERSION', '1.0.3' );
 define( 'UD_ULTRA_EMBED_NAME', plugin_basename( __FILE__ ) );
 define( 'UD_ULTRA_EMBED_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'UD_ULTRA_EMBED_DIR_URL', plugin_dir_url( __FILE__ ) );
@@ -48,9 +48,16 @@ if ( ! function_exists( 'ud_uei' ) ) {
 				'slug'                => 'ultraembed-advanced-iframe',
 				'type'                => 'plugin',
 				'public_key'          => 'pk_cf1ffd01996fff55d6437bb3fa364',
-				'is_premium'          => false,
+				'is_premium'          => true,
+				'premium_suffix'      => 'Pro',
+				// If your plugin is a serviceware, set this option to false.
+				'has_premium_version' => true,
 				'has_addons'          => false,
-				'has_paid_plans'      => false,
+				'has_paid_plans'      => true,
+				'trial'               => array(
+					'days'               => 3,
+					'is_require_payment' => false,
+				),
 				'menu'                => array(
 					'slug'           => 'ultraembed-advanced-iframe',
 				),
