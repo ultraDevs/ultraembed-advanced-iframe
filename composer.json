@@ -11,9 +11,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "appsero/client": "dev-master"
-    },
     "autoload": {
         "psr-4": {
             "ultraDevs\\UltraEmbed\\": "includes/"

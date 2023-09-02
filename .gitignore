@@ -32,6 +32,5 @@ node_modules/
 
 .map
 
-/vendor/
-
 /dist
+
